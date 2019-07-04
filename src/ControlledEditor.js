@@ -19,13 +19,15 @@ export class ControlledEditor extends React.Component {
       const isInList =
         prevState.text.substr(prevState.text.lastIndexOf("</") + 2, 2) ==
         CustomList.HTML_TAG;
+
+      const selectedText = ed.selection.getNode().innerText;
       //Parsing our custom React element to stringified HTML
       const elementToAdd = ReactDOMServer.renderToStaticMarkup(
         isInList ? (
-          <CustomListItem>{ed.selection.getNode().innerText}</CustomListItem>
+          <CustomListItem>{selectedText}</CustomListItem>
         ) : (
           <CustomList>
-            <CustomListItem>{ed.selection.getNode().innerText}</CustomListItem>
+            <CustomListItem>{selectedText}</CustomListItem>
           </CustomList>
         )
       );
@@ -45,6 +47,7 @@ export class ControlledEditor extends React.Component {
   };
 
   render() {
+    console.log(this.state.text);
     return (
       <Editor
         apiKey={process.env.REACT_APP_API_KEY}

@@ -3,6 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 
 export class UncontrolledEditor extends React.Component {
   handleAddCustomListCommand = ed => {
+    debugger;
     //Getting hold of the currnet node
     const elem = ed.selection.getNode();
     //Determining if the list item will be added to an existing list or a new list
@@ -21,9 +22,9 @@ export class UncontrolledEditor extends React.Component {
         }
       });
       ed.dom.add(ed.dom.select("ul#list")[0], "li", {}, elem.innerText);
+      //Removing written text after adding it as a list item
+      elem.remove && elem.remove();
     }
-    //Removing written text after adding it as a list item
-    elem.remove && elem.remove();
   };
 
   render() {
