@@ -3,7 +3,6 @@ import { Editor } from "@tinymce/tinymce-react";
 
 export class UncontrolledEditor extends React.Component {
   handleAddCustomListCommand = ed => {
-    debugger;
     //Getting hold of the currnet node
     const elem = ed.selection.getNode();
     //Determining if the list item will be added to an existing list or a new list
